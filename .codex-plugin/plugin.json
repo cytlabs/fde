@@ -1,0 +1,24 @@
+{
+  "name": "fde",
+  "version": "0.1.0",
+  "description": "FDE skills for customer discovery, pain-point analysis, business workflow decomposition, and MVP scoping.",
+  "author": {
+    "name": "FDE Skill Maintainers"
+  },
+  "license": "MIT",
+  "skills": "./skills/",
+  "keywords": ["fde", "customer-discovery", "ai-workflow", "mvp", "consulting"],
+  "interface": {
+    "displayName": "FDE Skills",
+    "shortDescription": "客户访谈、痛点洞察与 MVP 收敛",
+    "longDescription": "FDE Skills helps agents prepare customer discovery interviews, analyze customer conversations, identify real business pain points, decompose workflows, and scope practical MVP opportunities before proposing AI automation.",
+    "developerName": "FDE Skill Maintainers",
+    "category": "Productivity",
+    "capabilities": ["Skills"],
+    "defaultPrompt": [
+      "用 FDE skill 帮我准备客户访谈问题。",
+      "分析这段客户原话，告诉我下一步怎么追问。",
+      "把这份访谈记录整理成痛点和 MVP 机会。"
+    ]
+  }
+}
