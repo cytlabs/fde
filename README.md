@@ -1,15 +1,18 @@
 # FDE Skills
 
-FDE Skills 是一组面向 Forward Deployed Engineer / Field Deployment Engineer 的 Codex skills，用来辅助客户访谈、需求澄清、痛点洞察、业务流程拆解和 AI MVP 收敛。
+FDE Skills 是一组面向企业客户和 Forward Deployed Engineer / Field Deployment Engineer 的 Codex skills，用来辅助 AI 转型前置诊断、客户访谈、需求澄清、痛点洞察、业务流程拆解和 AI MVP 收敛。
 
-这个项目的目标不是让 AI 一上来生成完整技术方案，而是帮助 FDE 在客户沟通中先把问题问清楚：客户真正想改善什么业务结果，当前流程如何运行，哪里高频、重复、耗时、易错，哪些环节适合先做成可人工审核的 MVP。
+这个项目的目标不是让 AI 一上来生成完整技术方案，而是帮助企业客户在和 FDE 沟通前先整理业务材料，也帮助 FDE 在客户沟通中先把问题问清楚：客户真正想改善什么业务结果，当前流程如何运行，哪里高频、重复、耗时、易错，哪些环节适合先做成可人工审核的 MVP。
 
 ## 项目状态
 
-当前处于早期版本，已经包含第一个可用 skill：`fde-customer-discovery`。
+当前处于早期版本，已经包含两个可用 skill：`ai-transformation-precheck` 和 `fde-customer-discovery`。
 
 适合现在使用的场景：
 
+- 企业客户在和 FDE 沟通前做 AI 转型前置诊断
+- 盘点现有业务流程，识别可能适合 AI 提效的环节
+- 整理可发给 FDE 的前置沟通包
 - 准备客户访谈问题
 - 分析客户原话，判断下一步怎么追问
 - 整理客户访谈记录
@@ -25,6 +28,18 @@ FDE Skills 是一组面向 Forward Deployed Engineer / Field Deployment Engineer
 - 在没有人工审核的情况下直接承诺全自动交付
 
 ## 当前包含的 Skill
+
+### `ai-transformation-precheck`
+
+用于企业客户在和 FDE、AI 顾问或实施方沟通前，完成 AI 转型前置诊断、业务流程盘点、AI 提效机会识别、场景优先级排序和沟通材料准备。
+
+支持 5 种模式：
+
+1. **企业自诊模式**：当客户只知道“想做 AI 转型”或“想看看哪里能提效”时，引导补充业务背景、目标和重点流程。
+2. **业务流程盘点模式**：把某个部门、岗位或流程拆成触发条件、角色、工具、步骤、输入、输出和卡点。
+3. **单场景深挖模式**：评估一个候选场景是否适合作为优先 MVP，并明确风险和人工审核边界。
+4. **AI 机会排序模式**：对多个候选场景按业务价值、实现难度、数据情况和风险做优先级排序。
+5. **FDE 沟通包生成模式**：生成一份可发给 FDE 的结构化前置材料。
 
 ### `fde-customer-discovery`
 
@@ -71,7 +86,7 @@ codex plugin marketplace add https://github.com/yourname/fde.git
 2. 在 Codex CLI 中打开 `/plugins`。
 3. 切换到 `FDE Skills` marketplace。
 4. 安装 `FDE Skills` 插件。
-5. 新开一个对话，使用 `$fde-customer-discovery`。
+5. 新开一个对话，使用 `$ai-transformation-precheck` 或 `$fde-customer-discovery`。
 
 ### 本地安装
 
@@ -94,11 +109,20 @@ codex plugin marketplace add ./fde
 cd fde
 mkdir -p ~/.agents/skills
 cp -R skills/fde-customer-discovery ~/.agents/skills/
+cp -R skills/ai-transformation-precheck ~/.agents/skills/
 ```
 
-重启 Codex 后，可以直接使用 `$fde-customer-discovery`。
+重启 Codex 后，可以直接使用 `$ai-transformation-precheck` 或 `$fde-customer-discovery`。
 
 ## 快速开始
+
+### 客户侧：生成 FDE 前置沟通包
+
+```text
+使用 $ai-transformation-precheck。
+
+我们是一家做 B2B 销售的公司，销售团队每天要写跟进记录、整理客户需求、准备方案，也想看看客服和交付环节有没有 AI 提效空间。请帮我整理一份和 FDE 沟通前的业务材料。
+```
 
 ### 沟通前：生成访谈准备
 
@@ -145,6 +169,14 @@ cp -R skills/fde-customer-discovery ~/.agents/skills/
 ├── .codex-plugin/
 │   └── plugin.json
 ├── skills/
+│   ├── ai-transformation-precheck/
+│   │   ├── SKILL.md
+│   │   ├── agents/
+│   │   │   └── openai.yaml
+│   │   └── references/
+│   │       ├── diagnosis-framework.md
+│   │       ├── examples.md
+│   │       └── output-formats.md
 │   └── fde-customer-discovery/
 │       ├── SKILL.md
 │       ├── agents/
@@ -165,10 +197,11 @@ python3 -m json.tool .agents/plugins/marketplace.json
 ```
 
 修改 skill 或 plugin manifest 后，建议在本地 Codex 环境中重新安装 marketplace，并用 `/plugins` 确认 `FDE Skills` 可以被发现和安装。然后新开一个对话，显式调用 `$fde-customer-discovery` 跑一遍“沟通前”“沟通中”“沟通后”三个示例。
+也建议显式调用 `$ai-transformation-precheck` 跑一遍“客户侧前置沟通包”示例。
 
 如果你的 Codex 环境提供 skill/plugin 校验脚本，也建议同时校验：
 
-- `skills/fde-customer-discovery` 是合法 skill。
+- `skills/ai-transformation-precheck` 和 `skills/fde-customer-discovery` 是合法 skill。
 - 仓库根目录是合法 plugin。
 - `.agents/plugins/marketplace.json` 可以解析，并且指向仓库根目录 `./`。
 
@@ -176,7 +209,6 @@ python3 -m json.tool .agents/plugins/marketplace.json
 
 - 增加 `fde-mvp-scoping`：专门做 MVP 范围、交付阶段和验收标准收敛。
 - 增加 `fde-workflow-analysis`：专门把复杂业务口述拆成流程图、角色泳道和系统边界。
-- 增加 `fde-ai-opportunity-assessment`：专门评估业务场景是否适合 AI Workflow、Agent、RPA 或传统系统。
 - 增加 `fde-solution-brief`：把访谈结果转成客户可读的初步方案文档。
 - 增加行业案例 references：达人营销、电商运营、销售 CRM、客服、财务、人事等。
 - 增加可复制的交付模板：调研纪要、MVP proposal、风险评估表、客户确认清单。
