@@ -351,4 +351,4 @@ description: Use when turning customer descriptions, notes, or interview records
 
 - Superpowers: https://github.com/obra/superpowers
 - Superpowers skills: https://github.com/obra/superpowers/tree/main/skills
-- FDE skills 当前案例：`ai-transformation-precheck`、`fde-customer-discovery`
+- FDE skills 当前案例：`fde-intake`、`fde-discovery-interview`、`fde-workflow-mapping`、`fde-pain-analysis`、`fde-ai-opportunity-assessment`、`fde-mvp-scoping`、`fde-solution-brief`

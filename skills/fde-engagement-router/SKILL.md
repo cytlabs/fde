@@ -12,6 +12,7 @@ description: Use when a user is unsure which FDE skill or stage applies, when a 
 ## 阶段路由
 
 - **客户前置收集**：用户还没说清企业背景、业务目标、想解决的问题。使用 `fde-intake`。
+- **老板首访 / 商机判断**：用户第一次见老板、创始人、总经理、一把手，或想判断客户是否值得继续投入。使用 `fde-intake`，并读取老板首访 playbook。
 - **访谈准备或实时追问**：用户准备访谈、开需求会，或提供客户原话想知道怎么追问。使用 `fde-discovery-interview`。
 - **业务流程还原**：用户提供流程口述、会议记录、部门场景，想拆步骤、角色、工具、输入输出。使用 `fde-workflow-mapping`。
 - **痛点分析**：用户想区分表层需求、真实痛点、业务影响和关键角色。使用 `fde-pain-analysis`。

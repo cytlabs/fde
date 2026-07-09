@@ -6,7 +6,7 @@ FDE Skills 是一组面向企业客户和 Forward Deployed Engineer / Field Depl
 
 ## 项目状态
 
-当前处于早期版本，已经从两个大而全 skill 优化为阶段型 skill system。`ai-transformation-precheck` 和 `fde-customer-discovery` 仍保留为兼容入口，但默认推荐使用新的阶段型 skills。
+当前处于早期版本，已经从两个大而全 skill 优化为阶段型 skill system。当前只保留阶段型 skills，不再保留旧版兼容入口。
 
 适合现在使用的场景：
 
@@ -41,11 +41,6 @@ FDE Skills 是一组面向企业客户和 Forward Deployed Engineer / Field Depl
 | `fde-ai-opportunity-assessment` | AI 机会评估 | 候选场景适合度和优先级 |
 | `fde-mvp-scoping` | MVP 收敛 | MVP 闭环、边界、人工审核节点 |
 | `fde-solution-brief` | 方案表达 | 客户可读方案摘要 |
-
-### 兼容 Skills
-
-- `ai-transformation-precheck`：旧版客户侧 AI 转型前置诊断入口，保留用于显式调用。
-- `fde-customer-discovery`：旧版 FDE 客户发现入口，保留用于显式调用。
 
 ## 安装
 
@@ -103,8 +98,6 @@ codex plugin marketplace add ./fde
 ```bash
 cd fde
 mkdir -p ~/.agents/skills
-cp -R skills/fde-customer-discovery ~/.agents/skills/
-cp -R skills/ai-transformation-precheck ~/.agents/skills/
 cp -R skills/fde-engagement-router ~/.agents/skills/
 cp -R skills/fde-intake ~/.agents/skills/
 cp -R skills/fde-discovery-interview ~/.agents/skills/
@@ -133,6 +126,14 @@ cp -R skills/fde-solution-brief ~/.agents/skills/
 使用 $fde-intake。
 
 我们是一家做 B2B 销售的公司，销售团队每天要写跟进记录、整理客户需求、准备方案，也想看看客服和交付环节有没有 AI 提效空间。请帮我整理一份和 FDE 沟通前的业务材料。
+```
+
+### FDE 侧：第一次见老板做商机判断
+
+```text
+使用 $fde-intake。
+
+我明天第一次见一家制造业公司的老板，对方说想了解 AI 能不能帮公司提效。请按老板首访问题帮我准备 qualification 问题，并告诉我每个问题背后要判断什么。
 ```
 
 ### 沟通前：生成访谈准备
@@ -180,9 +181,7 @@ cp -R skills/fde-solution-brief ~/.agents/skills/
 ├── .codex-plugin/
 │   └── plugin.json
 ├── skills/
-│   ├── ai-transformation-precheck/
 │   ├── fde-ai-opportunity-assessment/
-│   ├── fde-customer-discovery/
 │   ├── fde-discovery-interview/
 │   ├── fde-engagement-router/
 │   ├── fde-intake/

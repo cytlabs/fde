@@ -1,6 +1,0 @@
-interface:
-  display_name: "AI 转型前置诊断（兼容）"
-  short_description: "旧版客户侧 AI 提效预诊断入口"
-  default_prompt: "Use $ai-transformation-precheck to prepare a structured AI transformation pre-consultation brief before talking to an FDE."
-policy:
-  allow_implicit_invocation: false

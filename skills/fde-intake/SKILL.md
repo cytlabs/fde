@@ -1,6 +1,6 @@
 ---
 name: fde-intake
-description: Use when collecting customer-side context before an FDE conversation, especially when a business user has vague AI transformation goals and needs to prepare enterprise background, business objectives, current problems, candidate workflows, data/tool context, and questions for an FDE.
+description: Use when collecting customer-side context before an FDE conversation, especially when a business user has vague AI transformation goals, when preparing for a first meeting with a boss or executive sponsor, or when qualifying enterprise background, business objectives, current problems, candidate workflows, data/tool context, and questions for an FDE.
 ---
 
 # FDE Intake
@@ -13,6 +13,7 @@ description: Use when collecting customer-side context before an FDE conversatio
 
 - 用户说想做 AI 转型、AI 提效、业务诊断，但还没有明确场景。
 - 用户准备和 FDE 沟通，希望提前整理材料。
+- 用户准备第一次见老板、创始人、总经理、一把手或业务负责人，需要判断客户是否值得继续投入。
 - 用户只能描述企业背景和模糊问题，还不能给出完整流程。
 
 ## 不使用时机
@@ -36,6 +37,10 @@ description: Use when collecting customer-side context before an FDE conversatio
 3. 识别客户已知问题和候选流程。
 4. 盘点当前工具、数据位置、历史样例和权限情况。
 5. 输出给 FDE 的前置沟通包和待确认问题。
+
+## 参考资料
+
+- 当用户准备第一次见老板、一把手、创始人、总经理，或需要判断客户是否值得继续投入时，读取 `references/executive-first-meeting.md`。
 
 ## 输出格式
 

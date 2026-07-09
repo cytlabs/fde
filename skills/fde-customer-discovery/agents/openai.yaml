@@ -1,6 +1,0 @@
-interface:
-  display_name: "FDE 客户发现（兼容）"
-  short_description: "旧版客户访谈、痛点与 MVP 入口"
-  default_prompt: "Use $fde-customer-discovery to prepare customer discovery questions and identify real business pain points."
-policy:
-  allow_implicit_invocation: false
