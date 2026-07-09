@@ -1,0 +1,6 @@
+interface:
+  display_name: "FDE 业务流程拆解"
+  short_description: "把客户口述还原成业务流程"
+  default_prompt: "Use $fde-workflow-mapping to turn customer notes into a structured business workflow."
+policy:
+  allow_implicit_invocation: true

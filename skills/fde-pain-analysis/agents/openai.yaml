@@ -1,0 +1,6 @@
+interface:
+  display_name: "FDE 痛点分析"
+  short_description: "区分表层需求和真实业务痛点"
+  default_prompt: "Use $fde-pain-analysis to identify real business pain behind a customer's stated solution."
+policy:
+  allow_implicit_invocation: true

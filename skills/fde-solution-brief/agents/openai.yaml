@@ -1,0 +1,6 @@
+interface:
+  display_name: "FDE 方案摘要"
+  short_description: "把已确认发现整理成客户可读方案"
+  default_prompt: "Use $fde-solution-brief to turn confirmed discovery outputs into a customer-readable solution brief."
+policy:
+  allow_implicit_invocation: true

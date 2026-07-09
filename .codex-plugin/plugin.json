@@ -1,25 +1,26 @@
 {
   "name": "fde",
   "version": "0.1.0",
-  "description": "FDE skills for customer discovery, AI transformation prechecks, pain-point analysis, business workflow decomposition, and MVP scoping.",
+  "description": "Stage-based FDE skills for intake, discovery interviews, workflow mapping, pain analysis, AI opportunity assessment, MVP scoping, and solution briefs.",
   "author": {
     "name": "FDE Skill Maintainers"
   },
   "license": "MIT",
   "skills": "./skills/",
-  "keywords": ["fde", "customer-discovery", "ai-transformation", "precheck", "ai-workflow", "mvp", "consulting"],
+  "keywords": ["fde", "customer-discovery", "ai-transformation", "workflow-mapping", "pain-analysis", "ai-opportunity", "mvp", "consulting"],
   "interface": {
     "displayName": "FDE Skills",
-    "shortDescription": "客户访谈、AI 转型预诊断与 MVP 收敛",
-    "longDescription": "FDE Skills helps enterprise customers prepare AI transformation prechecks before consulting an FDE, and helps FDEs prepare customer discovery interviews, analyze conversations, identify real business pain points, decompose workflows, and scope practical MVP opportunities before proposing AI automation.",
+    "shortDescription": "阶段型 FDE 客户发现与 MVP 收敛",
+    "longDescription": "FDE Skills provides a stage-based workflow for enterprise AI consulting: intake, discovery interviews, workflow mapping, pain analysis, AI opportunity assessment, MVP scoping, and customer-readable solution briefs.",
     "developerName": "FDE Skill Maintainers",
     "category": "Productivity",
     "capabilities": ["Skills"],
     "defaultPrompt": [
-      "用 FDE skill 帮我准备客户访谈问题。",
-      "用 AI 转型前置诊断 skill 帮我整理和 FDE 沟通前的业务材料。",
-      "分析这段客户原话，告诉我下一步怎么追问。",
-      "把这份访谈记录整理成痛点和 MVP 机会。"
+      "用 $fde-engagement-router 帮我判断当前应该进入哪个 FDE 阶段。",
+      "用 $fde-intake 帮我整理和 FDE 沟通前的业务材料。",
+      "用 $fde-discovery-interview 帮我准备客户访谈问题。",
+      "用 $fde-workflow-mapping 把这份访谈记录拆成业务流程。",
+      "用 $fde-mvp-scoping 帮我收敛一个 1-2 周可验证的 MVP。"
     ]
   }
 }

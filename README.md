@@ -1,12 +1,12 @@
 # FDE Skills
 
-FDE Skills 是一组面向企业客户和 Forward Deployed Engineer / Field Deployment Engineer 的 Codex skills，用来辅助 AI 转型前置诊断、客户访谈、需求澄清、痛点洞察、业务流程拆解和 AI MVP 收敛。
+FDE Skills 是一组面向企业客户和 Forward Deployed Engineer / Field Deployment Engineer 的阶段型 Codex skills，用来辅助 AI 转型前置信息收集、客户访谈、流程拆解、痛点分析、AI 机会评估、MVP 收敛和方案表达。
 
-这个项目的目标不是让 AI 一上来生成完整技术方案，而是帮助企业客户在和 FDE 沟通前先整理业务材料，也帮助 FDE 在客户沟通中先把问题问清楚：客户真正想改善什么业务结果，当前流程如何运行，哪里高频、重复、耗时、易错，哪些环节适合先做成可人工审核的 MVP。
+这个项目的目标不是让 AI 一上来生成完整技术方案，而是把 FDE 工作流拆成多个可组合阶段：先整理背景，再访谈追问，再还原流程，再识别痛点，再评估 AI 机会，最后才收敛 MVP 和表达方案。
 
 ## 项目状态
 
-当前处于早期版本，已经包含两个可用 skill：`ai-transformation-precheck` 和 `fde-customer-discovery`。
+当前处于早期版本，已经从两个大而全 skill 优化为阶段型 skill system。`ai-transformation-precheck` 和 `fde-customer-discovery` 仍保留为兼容入口，但默认推荐使用新的阶段型 skills。
 
 适合现在使用的场景：
 
@@ -29,28 +29,23 @@ FDE Skills 是一组面向企业客户和 Forward Deployed Engineer / Field Depl
 
 ## 当前包含的 Skill
 
-### `ai-transformation-precheck`
+### 推荐阶段型 Skills
 
-用于企业客户在和 FDE、AI 顾问或实施方沟通前，完成 AI 转型前置诊断、业务流程盘点、AI 提效机会识别、场景优先级排序和沟通材料准备。
+| Skill | 阶段 | 产物 |
+| --- | --- | --- |
+| `fde-engagement-router` | 路由 | 当前阶段判断和推荐 skill |
+| `fde-intake` | 前置收集 | 客户前置沟通包 |
+| `fde-discovery-interview` | 访谈 | 访谈问题、实时追问、信息缺口 |
+| `fde-workflow-mapping` | 流程拆解 | 流程、角色、工具、输入输出、卡点 |
+| `fde-pain-analysis` | 痛点分析 | 表层需求、真实痛点、业务影响 |
+| `fde-ai-opportunity-assessment` | AI 机会评估 | 候选场景适合度和优先级 |
+| `fde-mvp-scoping` | MVP 收敛 | MVP 闭环、边界、人工审核节点 |
+| `fde-solution-brief` | 方案表达 | 客户可读方案摘要 |
 
-支持 5 种模式：
+### 兼容 Skills
 
-1. **企业自诊模式**：当客户只知道“想做 AI 转型”或“想看看哪里能提效”时，引导补充业务背景、目标和重点流程。
-2. **业务流程盘点模式**：把某个部门、岗位或流程拆成触发条件、角色、工具、步骤、输入、输出和卡点。
-3. **单场景深挖模式**：评估一个候选场景是否适合作为优先 MVP，并明确风险和人工审核边界。
-4. **AI 机会排序模式**：对多个候选场景按业务价值、实现难度、数据情况和风险做优先级排序。
-5. **FDE 沟通包生成模式**：生成一份可发给 FDE 的结构化前置材料。
-
-### `fde-customer-discovery`
-
-用于客户访谈、痛点洞察、业务流程拆解和 MVP 机会判断。
-
-支持 4 种模式：
-
-1. **访谈准备模式**：根据客户背景和已知需求，生成分层访谈问题、确认清单和风险点。
-2. **实时追问模式**：分析客户刚说的一句话或一段话，判断表层方案、真实痛点和下一步追问。
-3. **访谈整理模式**：把聊天记录、会议纪要或语音转文字整理成结构化 FDE 分析。
-4. **MVP 收敛模式**：在信息足够时，收敛 1-2 周内可交付或可演示的 MVP 闭环。
+- `ai-transformation-precheck`：旧版客户侧 AI 转型前置诊断入口，保留用于显式调用。
+- `fde-customer-discovery`：旧版 FDE 客户发现入口，保留用于显式调用。
 
 ## 安装
 
@@ -86,7 +81,7 @@ codex plugin marketplace add https://github.com/yourname/fde.git
 2. 在 Codex CLI 中打开 `/plugins`。
 3. 切换到 `FDE Skills` marketplace。
 4. 安装 `FDE Skills` 插件。
-5. 新开一个对话，使用 `$ai-transformation-precheck` 或 `$fde-customer-discovery`。
+5. 新开一个对话，优先使用 `$fde-engagement-router` 判断阶段，或直接调用具体阶段 skill。
 
 ### 本地安装
 
@@ -110,16 +105,32 @@ cd fde
 mkdir -p ~/.agents/skills
 cp -R skills/fde-customer-discovery ~/.agents/skills/
 cp -R skills/ai-transformation-precheck ~/.agents/skills/
+cp -R skills/fde-engagement-router ~/.agents/skills/
+cp -R skills/fde-intake ~/.agents/skills/
+cp -R skills/fde-discovery-interview ~/.agents/skills/
+cp -R skills/fde-workflow-mapping ~/.agents/skills/
+cp -R skills/fde-pain-analysis ~/.agents/skills/
+cp -R skills/fde-ai-opportunity-assessment ~/.agents/skills/
+cp -R skills/fde-mvp-scoping ~/.agents/skills/
+cp -R skills/fde-solution-brief ~/.agents/skills/
 ```
 
-重启 Codex 后，可以直接使用 `$ai-transformation-precheck` 或 `$fde-customer-discovery`。
+重启 Codex 后，可以直接使用 `$fde-engagement-router` 或任一阶段型 skill。
 
 ## 快速开始
+
+### 判断当前阶段
+
+```text
+使用 $fde-engagement-router。
+
+客户说他们想做一个销售 Agent，但现在只知道销售团队很忙。我应该先进入哪个 FDE 阶段？
+```
 
 ### 客户侧：生成 FDE 前置沟通包
 
 ```text
-使用 $ai-transformation-precheck。
+使用 $fde-intake。
 
 我们是一家做 B2B 销售的公司，销售团队每天要写跟进记录、整理客户需求、准备方案，也想看看客服和交付环节有没有 AI 提效空间。请帮我整理一份和 FDE 沟通前的业务材料。
 ```
@@ -127,7 +138,7 @@ cp -R skills/ai-transformation-precheck ~/.agents/skills/
 ### 沟通前：生成访谈准备
 
 ```text
-使用 $fde-customer-discovery。
+使用 $fde-discovery-interview。
 
 客户是一家做海外达人营销的公司，目前他们说想用 AI 提高找达人、联系达人、客户需求对接、项目结项统计的效率。我准备和他们做一次线上沟通，请帮我生成访谈准备。
 ```
@@ -135,7 +146,7 @@ cp -R skills/ai-transformation-precheck ~/.agents/skills/
 ### 沟通中：分析客户原话
 
 ```text
-使用 $fde-customer-discovery。
+使用 $fde-discovery-interview。
 
 客户刚刚说：“我们现在主要问题是客户需求经常说不清楚，导致找来的达人不是客户想要的。”
 
@@ -145,16 +156,16 @@ cp -R skills/ai-transformation-precheck ~/.agents/skills/
 ### 沟通后：整理访谈记录
 
 ```text
-使用 $fde-customer-discovery。
+使用 $fde-workflow-mapping。
 
-下面是今天的客户访谈记录，请帮我整理成 FDE 需求分析：
+下面是今天的客户访谈记录，请帮我整理成业务流程、角色、工具、输入输出和卡点：
 ……
 ```
 
 ### 收敛 MVP
 
 ```text
-使用 $fde-customer-discovery。
+使用 $fde-mvp-scoping。
 
 基于以上信息，请帮我收敛一个现场两周可以交付的 MVP，要求包含：业务目标、核心流程、功能范围、不做什么、人工审核节点、技术路径、风险边界和下一步确认问题。
 ```
@@ -170,21 +181,15 @@ cp -R skills/ai-transformation-precheck ~/.agents/skills/
 │   └── plugin.json
 ├── skills/
 │   ├── ai-transformation-precheck/
-│   │   ├── SKILL.md
-│   │   ├── agents/
-│   │   │   └── openai.yaml
-│   │   └── references/
-│   │       ├── diagnosis-framework.md
-│   │       ├── examples.md
-│   │       └── output-formats.md
-│   └── fde-customer-discovery/
-│       ├── SKILL.md
-│       ├── agents/
-│       │   └── openai.yaml
-│       └── references/
-│           ├── examples.md
-│           ├── interview-framework.md
-│           └── output-formats.md
+│   ├── fde-ai-opportunity-assessment/
+│   ├── fde-customer-discovery/
+│   ├── fde-discovery-interview/
+│   ├── fde-engagement-router/
+│   ├── fde-intake/
+│   ├── fde-mvp-scoping/
+│   ├── fde-pain-analysis/
+│   ├── fde-solution-brief/
+│   └── fde-workflow-mapping/
 └── README.md
 ```
 
@@ -196,20 +201,18 @@ cp -R skills/ai-transformation-precheck ~/.agents/skills/
 python3 -m json.tool .agents/plugins/marketplace.json
 ```
 
-修改 skill 或 plugin manifest 后，建议在本地 Codex 环境中重新安装 marketplace，并用 `/plugins` 确认 `FDE Skills` 可以被发现和安装。然后新开一个对话，显式调用 `$fde-customer-discovery` 跑一遍“沟通前”“沟通中”“沟通后”三个示例。
-也建议显式调用 `$ai-transformation-precheck` 跑一遍“客户侧前置沟通包”示例。
+修改 skill 或 plugin manifest 后，建议在本地 Codex 环境中重新安装 marketplace，并用 `/plugins` 确认 `FDE Skills` 可以被发现和安装。然后新开一个对话，优先显式调用 `$fde-engagement-router` 跑一遍阶段判断，再分别调用 `$fde-intake`、`$fde-discovery-interview`、`$fde-workflow-mapping` 和 `$fde-mvp-scoping` 跑通主路径。
 
 如果你的 Codex 环境提供 skill/plugin 校验脚本，也建议同时校验：
 
-- `skills/ai-transformation-precheck` 和 `skills/fde-customer-discovery` 是合法 skill。
+- `skills/*` 下每个 skill 都是合法 skill。
 - 仓库根目录是合法 plugin。
 - `.agents/plugins/marketplace.json` 可以解析，并且指向仓库根目录 `./`。
 
 ## 路线图
 
-- 增加 `fde-mvp-scoping`：专门做 MVP 范围、交付阶段和验收标准收敛。
-- 增加 `fde-workflow-analysis`：专门把复杂业务口述拆成流程图、角色泳道和系统边界。
-- 增加 `fde-solution-brief`：把访谈结果转成客户可读的初步方案文档。
+- 增加 `evals/`：为每个阶段型 skill 增加压力场景和期望行为。
+- 增加共享方法论 references：沉淀 FDE 原则、MVP 选择规则、风险边界和常见反模式。
 - 增加行业案例 references：达人营销、电商运营、销售 CRM、客服、财务、人事等。
 - 增加可复制的交付模板：调研纪要、MVP proposal、风险评估表、客户确认清单。
 - 后续按需接入 MCP，例如读取飞书、Notion、GitHub、CRM、数据库或内部文档。

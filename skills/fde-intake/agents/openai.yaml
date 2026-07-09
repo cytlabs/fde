@@ -1,0 +1,6 @@
+interface:
+  display_name: "FDE 前置信息收集"
+  short_description: "整理客户见 FDE 前的业务沟通包"
+  default_prompt: "Use $fde-intake to prepare customer background and a pre-consultation brief before talking to an FDE."
+policy:
+  allow_implicit_invocation: true

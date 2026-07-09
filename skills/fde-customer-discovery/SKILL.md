@@ -1,9 +1,22 @@
 ---
 name: fde-customer-discovery
-description: 辅助 FDE 做客户访谈、需求澄清、痛点洞察、业务流程拆解和 MVP 机会判断。Use when the user is preparing customer discovery, analyzing customer quotes or meeting notes, deciding what to ask next, identifying real business pain behind a proposed AI/Dify/Lark/Agent solution, or turning customer conversations into structured FDE analysis and MVP scope.
+description: Legacy compatibility skill for broad FDE customer discovery, pain analysis, workflow decomposition, and MVP opportunity judgment. Prefer $fde-discovery-interview for interviews, $fde-workflow-mapping for workflow mapping, $fde-pain-analysis for pain analysis, $fde-ai-opportunity-assessment for opportunity assessment, and $fde-mvp-scoping for MVP scoping.
 ---
 
 # FDE 客户访谈与痛点洞察
+
+## 状态
+
+这是早期的大而全 FDE 客户发现入口，保留用于兼容已有调用。新的阶段型工作流优先使用：
+
+- `fde-discovery-interview`：访谈准备和实时追问。
+- `fde-workflow-mapping`：业务流程拆解。
+- `fde-pain-analysis`：真实痛点分析。
+- `fde-ai-opportunity-assessment`：AI 机会评估。
+- `fde-mvp-scoping`：MVP 收敛。
+- `fde-solution-brief`：客户可读方案摘要。
+
+如果用户没有显式要求使用本 skill，优先建议进入上述阶段型 skill。
 
 ## 核心目标
 

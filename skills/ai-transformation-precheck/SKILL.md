@@ -1,9 +1,20 @@
 ---
 name: ai-transformation-precheck
-description: 帮助企业客户在与 FDE、AI 顾问或实施方沟通前，完成 AI 转型前置诊断、业务流程盘点、AI 提效机会识别、场景优先级排序和沟通材料准备。Use when a business user wants to find where AI can improve existing operations, prepare for an FDE consultation, assess AI automation opportunities, or turn vague transformation goals into a structured pre-consultation brief.
+description: Legacy compatibility skill for broad customer-side AI transformation prechecks before talking to an FDE. Prefer $fde-intake for customer context collection, $fde-workflow-mapping for process mapping, $fde-ai-opportunity-assessment for AI opportunity evaluation, and $fde-mvp-scoping for MVP narrowing.
 ---
 
 # AI 转型前置诊断
+
+## 状态
+
+这是早期的大而全客户侧入口，保留用于兼容已有调用。新的阶段型工作流优先使用：
+
+- `fde-intake`：客户前置信息收集和沟通包。
+- `fde-workflow-mapping`：业务流程拆解。
+- `fde-ai-opportunity-assessment`：AI 机会评估。
+- `fde-mvp-scoping`：MVP 收敛。
+
+如果用户没有显式要求使用本 skill，优先建议进入上述阶段型 skill。
 
 ## 核心目标
 
