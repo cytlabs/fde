@@ -6,7 +6,7 @@ FDE Skills 是一组面向企业客户和 Forward Deployed Engineer / Field Depl
 
 ## 项目状态
 
-当前处于早期版本，已经从两个大而全 skill 优化为阶段型 skill system。当前只保留阶段型 skills，不再保留旧版兼容入口。
+各阶段通过“事实、假设、证据、信息缺口”交接，仓库内提供路由和行为 eval 语料。
 
 适合现在使用的场景：
 
@@ -171,6 +171,8 @@ cp -R skills/fde-solution-brief ~/.agents/skills/
 基于以上信息，请帮我收敛一个现场两周可以交付的 MVP，要求包含：业务目标、核心流程、功能范围、不做什么、人工审核节点、技术路径、风险边界和下一步确认问题。
 ```
 
+MVP 验收必须同时给出当前基线、目标、测试样本、测量方式和验收责任人；缺少这些信息时先列缺口，不编造百分比目标。
+
 ## 仓库结构
 
 ```text
@@ -180,6 +182,10 @@ cp -R skills/fde-solution-brief ~/.agents/skills/
 │       └── marketplace.json
 ├── .codex-plugin/
 │   └── plugin.json
+├── evals/
+│   └── cases.json
+├── scripts/
+│   └── validate_repo.py
 ├── skills/
 │   ├── fde-ai-opportunity-assessment/
 │   ├── fde-discovery-interview/
@@ -200,6 +206,14 @@ cp -R skills/fde-solution-brief ~/.agents/skills/
 python3 -m json.tool .agents/plugins/marketplace.json
 ```
 
+一次性校验 plugin manifest、skill 结构和 eval 语料：
+
+```bash
+python3 scripts/validate_repo.py
+```
+
+`evals/cases.json` 定义预期 skill、模式、必须覆盖内容和禁止行为。当前脚本校验 eval 语料的结构与覆盖范围；修改行为契约后，还应在新对话中用这些 prompt 做 forward test。
+
 修改 skill 或 plugin manifest 后，建议在本地 Codex 环境中重新安装 marketplace，并用 `/plugins` 确认 `FDE Skills` 可以被发现和安装。然后新开一个对话，优先显式调用 `$fde-engagement-router` 跑一遍阶段判断，再分别调用 `$fde-intake`、`$fde-discovery-interview`、`$fde-workflow-mapping` 和 `$fde-mvp-scoping` 跑通主路径。
 
 如果你的 Codex 环境提供 skill/plugin 校验脚本，也建议同时校验：
@@ -210,7 +224,7 @@ python3 -m json.tool .agents/plugins/marketplace.json
 
 ## 路线图
 
-- 增加 `evals/`：为每个阶段型 skill 增加压力场景和期望行为。
+- 接入自动化 model eval runner，基于现有 `evals/cases.json` 检查真实输出。
 - 增加共享方法论 references：沉淀 FDE 原则、MVP 选择规则、风险边界和常见反模式。
 - 增加行业案例 references：达人营销、电商运营、销售 CRM、客服、财务、人事等。
 - 增加可复制的交付模板：调研纪要、MVP proposal、风险评估表、客户确认清单。
@@ -238,4 +252,5 @@ python3 -m json.tool .agents/plugins/marketplace.json
 - 先识别真实痛点，再讨论解决方案。
 - 先做可人工审核的 MVP，再考虑全自动。
 - 不把客户原话直接当需求。
+- 事实、假设和证据分开记录，阶段之间传递信息缺口。
 - 不过早承诺功能和交付范围。

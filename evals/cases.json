@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "route-mixed-request",
+      "prompt": "客户说销售团队很忙。帮我访谈、找痛点、判断 Agent 是否可行，再直接写一份两周方案。",
+      "expected_skill": "fde-engagement-router",
+      "must_cover": ["只推荐一个立即阶段", "说明阶段顺序", "输出交接包"],
+      "must_not": ["直接生成完整方案", "同时执行所有阶段"]
+    },
+    {
+      "id": "intake-vague-transformation",
+      "prompt": "我们公司想做 AI 转型，但还不知道先做哪个部门，帮我整理和 FDE 沟通前的材料。",
+      "expected_skill": "fde-intake",
+      "expected_mode": "客户前置沟通包",
+      "must_cover": ["企业背景", "业务目标", "工具和数据", "信息缺口"],
+      "must_not": ["承诺技术方案", "虚构业务流程"]
+    },
+    {
+      "id": "intake-executive-first-meeting",
+      "prompt": "我明天第一次见一家制造企业老板，要判断这个客户是否值得继续投入 discovery。",
+      "expected_skill": "fde-intake",
+      "expected_mode": "老板首访 qualification",
+      "must_cover": ["读取 executive-first-meeting reference", "业务动机", "授权和真实样例"],
+      "must_not": ["使用通用前置包替代首访模板", "用固定人数门槛淘汰客户"]
+    },
+    {
+      "id": "discovery-preparation",
+      "prompt": "客户做海外达人营销，我后天访谈业务负责人，帮我准备问题。",
+      "expected_skill": "fde-discovery-interview",
+      "expected_mode": "访谈前准备",
+      "must_cover": ["分层问题树", "已知事实", "信息缺口"],
+      "must_not": ["直接判断真实痛点", "直接推荐 Agent"]
+    },
+    {
+      "id": "discovery-live-next-question",
+      "prompt": "客户刚说：需求经常说不清楚，找来的达人不是客户想要的。下一句最该问什么？",
+      "expected_skill": "fde-discovery-interview",
+      "expected_mode": "实时追问",
+      "must_cover": ["一个主问题", "提问原因"],
+      "must_not": ["输出完整访谈问题树", "断言真实痛点"]
+    },
+    {
+      "id": "workflow-from-notes",
+      "prompt": "这里是客服退款流程访谈记录，请整理当前流程：用户在企微反馈，客服复制订单号到 ERP 查询，再在飞书找主管审批……",
+      "expected_skill": "fde-workflow-mapping",
+      "must_cover": ["步骤表", "事实与假设分离", "例外和返工路径", "证据状态"],
+      "must_not": ["输出技术方案", "补写记录中不存在的流程"]
+    },
+    {
+      "id": "pain-from-workflow",
+      "prompt": "基于上面的退款流程，区分客户说的‘做退款 Agent’和真正需要验证的业务痛点。",
+      "expected_skill": "fde-pain-analysis",
+      "must_cover": ["表层方案", "痛点候选", "证据来源", "关键角色"],
+      "must_not": ["把纯假设写成已验证", "直接进入技术选型"]
+    },
+    {
+      "id": "opportunity-with-evidence",
+      "prompt": "退款流程的输入输出、历史工单、审核人和错误记录都已整理，请比较 AI、Workflow、RPA 和人工优化。",
+      "expected_skill": "fde-ai-opportunity-assessment",
+      "must_cover": ["逐维度评分和证据", "硬性门槛", "推荐路径", "MVP 交接字段"],
+      "must_not": ["无证据补分", "把所有自动化归为 Agent"]
+    },
+    {
+      "id": "mvp-valid-input",
+      "prompt": "已确认客服每天处理 120 单退款，现有基线 8 分钟一单，有 300 条脱敏历史样例，主管逐单审核。请收敛两周 MVP。",
+      "expected_skill": "fde-mvp-scoping",
+      "must_cover": ["最小闭环", "技术路径", "基线和目标", "测试样本", "验收责任人"],
+      "must_not": ["扩展到全客服流程", "省略人工审核"]
+    },
+    {
+      "id": "mvp-insufficient-input",
+      "prompt": "帮我两周做一个自动化全公司经营的 Agent，现在还没有数据和负责人。",
+      "expected_skill": "fde-engagement-router",
+      "must_cover": ["指出缺少前置产物", "推荐更前置阶段"],
+      "must_not": ["编造 MVP 范围", "承诺全自动", "发明样本数量或交付物"]
+    },
+    {
+      "id": "solution-brief-confirmed",
+      "prompt": "流程、痛点、机会评估和 MVP 验收表都已确认，请整理成客户可读的第一阶段方案摘要。",
+      "expected_skill": "fde-solution-brief",
+      "must_cover": ["已确认依据", "第一阶段", "非目标", "风险边界"],
+      "must_not": ["新增未经确认的承诺", "把假设写成事实"]
+    },
+    {
+      "id": "solution-brief-too-early",
+      "prompt": "客户只说想用 AI 提效，先帮我写一份正式 proposal。",
+      "expected_skill": "fde-engagement-router",
+      "must_cover": ["识别信息不足", "推荐 intake 或 discovery"],
+      "must_not": ["包装成完整 proposal", "虚构客户问题"]
+    }
+  ]
+}

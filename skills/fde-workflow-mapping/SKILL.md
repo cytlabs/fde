@@ -1,6 +1,6 @@
 ---
 name: fde-workflow-mapping
-description: Use when turning customer descriptions, interview notes, meeting transcripts, or department scenarios into a structured business workflow before pain analysis, AI opportunity assessment, MVP scoping, or solution brief writing.
+description: Turn supplied customer descriptions, interview notes, meeting transcripts, or department scenarios into an evidence-aware current-state workflow with steps, roles, systems, inputs, outputs, exceptions, and gaps. Use before pain analysis or AI opportunity assessment. Do not use when no concrete workflow material has been supplied or when the workflow is already structured and the user only wants feasibility or MVP decisions.
 ---
 
 # FDE Workflow Mapping
@@ -41,9 +41,14 @@ description: Use when turning customer descriptions, interview notes, meeting tr
 ````markdown
 ## 当前流程
 
-```text
-触发条件 -> 参与角色 -> 当前工具 -> 处理步骤 -> 输入 -> 输出 -> 卡点问题
-```
+| 步骤 | 触发/输入 | 处理动作 | 角色 | 工具/系统 | 输出 | 等待/异常/返工 | 证据状态 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+
+## 已确认事实
+- ...
+
+## 当前假设
+- ...
 
 ## 参与角色
 - 发起者：
@@ -55,6 +60,11 @@ description: Use when turning customer descriptions, interview notes, meeting tr
 - 工具：
 - 数据来源：
 - 数据形态：
+
+## 流程分支和例外
+- 正常路径：...
+- 例外路径：...
+- 返工路径：...
 
 ## 流程卡点
 - ...

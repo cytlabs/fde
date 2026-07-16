@@ -1,6 +1,6 @@
 ---
 name: fde-solution-brief
-description: Use when turning confirmed FDE discovery outputs into a customer-readable solution brief, proposal summary, MVP narrative, phased delivery outline, risk boundary statement, or next-step document without inventing unconfirmed requirements.
+description: Turn confirmed FDE discovery and MVP outputs into a customer-readable solution brief, proposal summary, phased delivery outline, risk boundary, and next-step document. Use only when the business problem, recommended first-stage scope, evidence, non-goals, review points, and validation approach are already available. Do not use to fill discovery gaps or invent an MVP.
 ---
 
 # FDE Solution Brief
@@ -32,9 +32,10 @@ description: Use when turning confirmed FDE discovery outputs into a customer-re
 ## 工作流程
 
 1. 提取已确认信息。
-2. 组织客户可读叙事：背景、问题、推荐试点、MVP 闭环、阶段计划。
-3. 明确不做范围、风险边界和客户需要确认的问题。
-4. 输出简洁、可发送的材料。
+2. 将事实、假设和待确认事项分开，假设不得写成承诺。
+3. 组织客户可读叙事：背景、问题、推荐试点、MVP 闭环、阶段计划。
+4. 明确不做范围、风险边界和客户需要确认的问题。
+5. 输出简洁、可发送的材料。
 
 ## 输出格式
 
@@ -71,6 +72,10 @@ description: Use when turning confirmed FDE discovery outputs into a customer-re
 1. ...
 2. ...
 3. ...
+
+## 依据与假设
+- 已确认依据：...
+- 尚待验证假设：...
 ```
 
 ## 质量检查

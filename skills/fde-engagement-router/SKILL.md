@@ -1,6 +1,6 @@
 ---
 name: fde-engagement-router
-description: Use when a user is unsure which FDE skill or stage applies, when a request mixes intake, discovery, workflow mapping, pain analysis, AI opportunity assessment, MVP scoping, or solution brief work, or when the agent needs to route an FDE engagement before doing analysis.
+description: Route ambiguous or multi-stage FDE requests to exactly one next skill. Use when the user is unsure which FDE stage applies or mixes intake, interview, workflow mapping, pain analysis, AI opportunity assessment, MVP scoping, and solution brief work. Do not use when the user explicitly requests one stage and has supplied that stage's required inputs.
 ---
 
 # FDE Engagement Router
@@ -26,6 +26,10 @@ description: Use when a user is unsure which FDE skill or stage applies, when a 
 - 如果用户请求跨多个阶段，先指出阶段顺序，不要一次性混合输出。
 - 如果信息不足，先推荐最前置的合适 skill。
 - 如果用户明确点名某个 skill，尊重显式选择，但指出可能缺少的前置产物。
+- 一次只推荐一个“立即使用”的 skill；其他阶段只能列为后续顺序。
+- 必须使用下方完整模板，不得用咨询建议、问题清单或直接分析替代路由结果。
+- 信息未知时写 `待确认`，不得因此省略“推荐 skill”或“交接包”。
+- 不得在 router 中拟定 MVP、交付物、样本数量或候选功能；这些属于下游阶段。
 
 ## 输出格式
 
@@ -46,6 +50,14 @@ description: Use when a user is unsure which FDE skill or stage applies, when a 
 
 - ...
 
+## 交接包
+
+- 已确认事实：...
+- 当前假设：...
+- 可用证据：...
+- 信息缺口：...
+- 用户期望产物：...
+
 ## 后续阶段
 
 1. ...
@@ -58,3 +70,4 @@ description: Use when a user is unsure which FDE skill or stage applies, when a 
 - 是否解释了为什么推荐该阶段？
 - 是否指出了缺失的前置信息？
 - 是否给出了清晰的下一步？
+- 交接包是否能让下一个 skill 直接继续，而不需要重新理解上下文？

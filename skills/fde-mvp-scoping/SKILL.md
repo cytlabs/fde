@@ -1,6 +1,6 @@
 ---
 name: fde-mvp-scoping
-description: Use when narrowing a validated business problem and AI opportunity into a 1-2 week MVP scope, defining the end-to-end loop, core functions, non-goals, human review points, risk boundaries, validation criteria, and next actions.
+description: Narrow one validated business pain and evidence-backed AI or automation opportunity into a 1-2 week MVP. Use when the workflow, input, output, data access, review owner, and main risks are known enough to define scope, non-goals, technical path, baseline, target, evaluation sample, acceptance owner, and next actions. Do not use for vague transformation goals or unvalidated opportunities.
 ---
 
 # FDE MVP Scoping
@@ -29,6 +29,7 @@ description: Use when narrowing a validated business problem and AI opportunity 
 - 高风险决策不得全自动。
 - 没有验收方式的功能不进入 MVP。
 - 必须明确非 MVP 范围。
+- 不得用没有基线、样本或验收责任人的百分比作为验收目标。
 
 ## 工作流程
 
@@ -36,8 +37,9 @@ description: Use when narrowing a validated business problem and AI opportunity 
 2. 选择一个最小可验证场景。
 3. 定义 MVP 闭环。
 4. 列出核心功能和非 MVP 范围。
-5. 明确人工审核节点、风险边界和验收标准。
-6. 输出下一步行动。
+5. 选择最小技术路径，优先复用现有工具和可导出的真实样例。
+6. 明确人工审核节点、风险边界和验收标准。
+7. 输出下一步行动。
 
 ## 输出格式
 
@@ -63,11 +65,28 @@ description: Use when narrowing a validated business problem and AI opportunity 
 ## 人工审核节点
 - ...
 
+## 技术路径
+- 现有系统/数据入口：
+- MVP 处理方式：
+- 输出回写或交付方式：
+- 暂不建设的集成：
+
 ## 风险边界
 - ...
 
 ## 验收标准
-- ...
+| 指标 | 当前基线 | MVP 目标 | 测试样本 | 测量方式 | 验收责任人 |
+| --- | --- | --- | --- | --- | --- |
+
+## 失败判定
+- 数据问题：...
+- 模型/规则问题：...
+- 流程或采用问题：...
+
+## 已确认与待确认
+- 已确认事实：...
+- 当前假设：...
+- 待补证据：...
 
 ## 下一步行动
 1. ...

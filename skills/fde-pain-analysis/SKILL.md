@@ -1,6 +1,6 @@
 ---
 name: fde-pain-analysis
-description: Use when distinguishing a customer's stated solution from the real business pain, analyzing explicit needs, hidden pain points, business impact, affected roles, and assumptions after intake, discovery, or workflow mapping.
+description: Analyze a supplied workflow or discovery record to distinguish a customer's stated solution from evidence-backed business pain, affected roles, impact, and assumptions. Use when the user wants a pain hypothesis or validation questions. Do not use merely to decide the next interview question, map an unstructured workflow, assess AI feasibility, or scope an MVP.
 ---
 
 # FDE Pain Analysis
@@ -50,8 +50,10 @@ description: Use when distinguishing a customer's stated solution from the real 
 - ...
 
 ## 真实痛点候选
-| 痛点 | 影响环节 | 影响对象 | 业务影响 | 证据强度 |
-| --- | --- | --- | --- | --- |
+| 痛点候选 | 影响环节 | 影响对象 | 业务影响 | 证据来源 | 证据强度 |
+| --- | --- | --- | --- | --- | --- |
+
+证据强度仅使用：`已验证` / `有迹象` / `纯假设`。
 
 ## 关键角色
 - 最痛的人：
@@ -63,6 +65,9 @@ description: Use when distinguishing a customer's stated solution from the real 
 1. ...
 2. ...
 3. ...
+
+## 建议下一阶段
+`fde-discovery-interview` / `fde-ai-opportunity-assessment`
 ```
 
 ## 质量检查

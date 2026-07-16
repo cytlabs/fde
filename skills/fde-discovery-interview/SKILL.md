@@ -1,6 +1,6 @@
 ---
 name: fde-discovery-interview
-description: Use when preparing or conducting an FDE customer discovery interview, generating layered interview questions, analyzing a customer's latest statement, deciding what to ask next, or identifying information gaps before workflow mapping or solution scoping.
+description: Prepare or conduct an FDE customer discovery interview. Use preparation mode to generate a layered interview plan; use live mode when the user provides a customer's latest statement and asks what to ask next. Do not use to conclude the real pain, map a complete supplied workflow, assess AI feasibility, or scope an MVP.
 ---
 
 # FDE Discovery Interview
@@ -29,15 +29,18 @@ description: Use when preparing or conducting an FDE customer discovery intervie
 - 不要一上来讨论工具选型。
 - 问题必须从业务目标到流程、角色、痛点、数据、风险逐层推进。
 - 信息不足时，输出下一步追问，不要假装确定结论。
+- 访谈前模式必须使用完整模板；未知内容写 `待确认`，不得自行省略栏目。
+- 实时模式优先简洁：必须给出一个主问题和提问原因；仅在存在明显分支时给出最多两个备选问题。
 
 ## 工作流程
 
 1. 判断用户是在访谈前准备，还是实时追问。
 2. 区分已知事实、客户假设、表层方案、信息缺口。
 3. 设计分层问题：业务目标、当前流程、角色分工、痛点、数据工具、MVP 可能性。
-4. 指出暂时不要承诺的内容。
+4. 访谈前输出完整问题树；实时追问只输出一个主问题和最多两个备选问题。
+5. 指出暂时不要承诺的内容。
 
-## 输出格式
+## 输出格式：访谈前准备
 
 ```markdown
 ## 当前访谈判断
@@ -69,6 +72,37 @@ description: Use when preparing or conducting an FDE customer discovery intervie
 
 ## 暂时不要承诺
 - ...
+
+## 交接记录
+- 已确认事实：...
+- 当前假设：...
+- 可用证据：...
+- 信息缺口：...
+```
+
+## 输出格式：实时追问
+
+```markdown
+## 当前判断
+- 客户刚确认了什么：...
+- 仍然只是推测什么：...
+
+## 下一问
+**问题：** ...
+
+**为什么现在问：** ...
+
+## 备选追问
+1. ...（仅在有价值时提供）
+2. ...（仅在有价值时提供）
+
+## 本轮要记录
+- 事实：...
+- 证据：...
+- 新增信息缺口：...
+
+## 暂时不要下的结论
+- ...
 ```
 
 ## 质量检查
@@ -77,3 +111,4 @@ description: Use when preparing or conducting an FDE customer discovery intervie
 - 是否避免把客户表层方案当需求？
 - 是否按层次追问，而不是泛泛问痛点？
 - 是否指出了不能过早承诺的内容？
+- 实时模式是否只给出一个最高优先级主问题，而不是整套问题清单？
