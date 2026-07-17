@@ -15,6 +15,7 @@ description: Prepare or conduct an FDE customer discovery interview. Use prepara
 - 用户提供客户背景，希望生成访谈问题。
 - 用户提供客户刚说的一句话，想知道下一步怎么追问。
 - 用户需要识别当前信息缺口。
+- 用户需要一线员工现场访谈话术、访谈检查清单或真实材料收集指引时，读取 `references/frontline-employee-interview-playbook.md`。
 
 ## 不使用时机
 
@@ -39,6 +40,10 @@ description: Prepare or conduct an FDE customer discovery interview. Use prepara
 3. 设计分层问题：业务目标、当前流程、角色分工、痛点、数据工具、MVP 可能性。
 4. 访谈前输出完整问题树；实时追问只输出一个主问题和最多两个备选问题。
 5. 指出暂时不要承诺的内容。
+
+## 参考材料
+
+- `references/frontline-employee-interview-playbook.md`：一线员工现场访谈话术、真实材料收集方法、结束前六件事检查清单和访谈记录模板。
 
 ## 输出格式：访谈前准备
 
